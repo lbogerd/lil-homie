@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f5f0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="/icon-192.png">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+  <title>Lil Homie · Push test</title>
+</head>
+<body>
+<main>
+  <header><span class="eyebrow">A tiny notification lab</span><h1>Lil Homie<span aria-hidden="true">.</span></h1><p>Push a button. See what reaches your iPhone.</p></header>
+  <section class="install" aria-label="Installation"><strong>Start from your Home Screen</strong><p>In Safari, sign in, then Share → Add to Home Screen. Keep “Open as Web App” on if shown. Open the new icon, sign in if asked, then enable notifications.</p><p id="install-status">Checking this installation…</p></section>
+  <section aria-label="Notification controls">
+    <div class="status-grid"><div><span class="label">Permission</span><strong id="permission">Checking…</strong></div><div><span class="label">Subscription</span><strong id="subscription">Checking…</strong></div></div>
+    <div class="actions"><button id="enable" class="primary" disabled>Enable notifications</button><button id="stop" disabled>Stop notifications</button></div>
+    <button id="refresh" class="text-button">Refresh status</button>
+    <p id="message" role="status" aria-live="polite">Preparing the app…</p>
+    <a id="login" href="/" hidden>Sign in / reload app</a>
+  </section>
+  <section aria-labelledby="tests-title"><h2 id="tests-title">Try a push</h2><p class="hint">Every test requests a visible notification. Focus and iOS settings control how it appears.</p>
+    <div class="test-row"><div><h3>Right now</h3><p>Send one notification to this installation.</p></div><button data-scenario="immediate" disabled>Send test</button></div>
+    <div class="test-row"><div><h3>In 30 seconds</h3><p>The timer runs on the server.</p></div><button data-scenario="delayed" disabled>Send in 30s</button></div>
+    <details><summary>More test scenarios</summary>
+      <div class="test-row"><div><h3>App open</h3><p>Keep this page on screen. Check the banner or Notification Center.</p></div><button data-scenario="open" disabled>Test open</button></div>
+      <div class="test-row"><div><h3>App closed</h3><p>Start, then leave the app. For a stronger check, swipe it away in the app switcher. Wait 30 seconds.</p></div><button data-scenario="closed" disabled>Test closed</button></div>
+      <div class="test-row"><div><h3>Phone locked</h3><p>Start, then lock your phone. Check the Lock Screen after 30 seconds.</p></div><button data-scenario="locked" disabled>Test locked</button></div>
+      <div class="test-row"><div><h3>Tap to reopen</h3><p>Start, leave the app, then tap the notification when it arrives in 30 seconds.</p></div><button data-scenario="tap" disabled>Test tap</button></div>
+      <div class="test-row"><div><h3>Permission denied</h3><p>Follow the steps below; iOS controls this setting.</p></div><button id="denial">Test denial</button></div>
+      <div class="test-row"><div><h3>Stop → enable again</h3><p>Schedule a test, then stop before it sends. Confirm it is cancelled. Enable again and send a new test.</p></div><button id="stop-guide">Show steps</button></div>
+    </details>
+    <div id="guide" class="guide" hidden tabindex="-1"></div>
+  </section>
+  <section aria-labelledby="results-title"><h2 id="results-title">Recent tests</h2><p class="hint">“Accepted” means the push service accepted it. Use “I saw it” only after you see that test on your phone. Results stay for 7 days; your observations stay in this installation.</p><ol id="results"><li>No tests yet.</li></ol></section>
+  <footer>Just a push test. No background tracking.</footer>
+</main>
+</body>
+</html>

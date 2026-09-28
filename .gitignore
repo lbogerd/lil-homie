@@ -1,0 +1,13 @@
+node_modules/
+data/
+.env
+*.log
+test-results/
+.env.*
+!.env.example
+playwright-report/
+
+# Superseded personal planning records; retained locally, not published.
+docs/smart-plan-*.json
+docs/scope-and-options.md
+docs/scope-pwa-review.md

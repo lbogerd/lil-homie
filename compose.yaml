@@ -1,0 +1,23 @@
+name: lil-homie
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    init: true
+    ports:
+      - "127.0.0.1:3215:3000"
+    environment:
+      APP_ORIGIN: https://lil-homie.tainer.run
+      ALLOWED_USER: lucas
+    volumes:
+      - push_data:/data
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+volumes:
+  push_data:
